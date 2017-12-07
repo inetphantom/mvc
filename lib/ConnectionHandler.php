@@ -58,6 +58,7 @@ class ConnectionHandler
             self::$connection = new MySQLi($host, $username, $password, $database);
             if (self::$connection->connect_error) {
                 $error = self::$connection->connect_error;
+
                 throw new Exception("Verbindungsfehler: $error");
             }
 
