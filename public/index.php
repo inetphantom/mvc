@@ -9,7 +9,6 @@
  * auf eine bestehende Datei zeigen hierhin umgeleitet.
  */
 
-require_once '../Library/Dispatcher.php';
-require_once '../Library/UriParser.php';
+require_once '../src/Dispatcher/Dispatcher.php';
 
 Dispatcher::dispatch();
