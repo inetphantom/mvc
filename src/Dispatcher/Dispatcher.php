@@ -1,6 +1,6 @@
 <?php
 
-require_once 'UriParser_Solution.php';
+namespace App\Dispatcher;
 
 /**
  * Der Dispatcher ist dafür zuständig, alle Requests an den entsprechenden
@@ -30,17 +30,13 @@ class Dispatcher
      */
     public static function dispatch()
     {
-        //echo "Die Methode dispatch im Dispatcher wurde aufgerufen";
-
         $controllerName = UriParser_Solution::getControllerName().'Controller';
+        $className = 'App\\Controller\\'.$controllerName;
         $methodName = UriParser_Solution::getMethodName();
-
-        // Den gewünschten Controller laden
-        require_once "../src/Controller/$controllerName.php";
 
         // Eine neue Instanz des Controllers wird erstellt und die gewünschte
         // Methode darauf aufgerufen.
-        $controller = new $controllerName();
+        $controller = new $className();
         $controller->$methodName();
     }
 }

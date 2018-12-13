@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Dispatcher;
+
 class UriParser
 {
     /**

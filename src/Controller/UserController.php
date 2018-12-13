@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 /**
  * Siehe Dokumentation im DefaultController.
  */

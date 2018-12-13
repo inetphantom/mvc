@@ -9,6 +9,8 @@
  * auf eine bestehende Datei zeigen hierhin umgeleitet.
  */
 
-require_once '../src/Dispatcher/Dispatcher.php';
+require_once __DIR__.'/../vendor/autoload.php';
+
+use App\Dispatcher\Dispatcher;
 
 Dispatcher::dispatch();
