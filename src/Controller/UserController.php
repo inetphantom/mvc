@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\View\View;
 use App\Form\Form;
 use App\Repository\UserRepository;
+use App\View\View;
 
 /**
  * Siehe Dokumentation im DefaultController.
