@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\View\View;
+use App\Form\Form;
 use App\Repository\UserRepository;
 
 /**
@@ -23,9 +24,17 @@ class UserController
 
     public function create()
     {
+        $form = new Form('/user/doCreate');
+        $form->text()->label('Vorname')->name('fname');
+        $form->text()->label('Nachname')->name('lname');
+        $form->text()->label('Mail')->name('email');
+        // echo $form->password()->label('Password')->name('password');
+        $form->submit()->label('Benutzer erstellen')->name('send');
+
         $view = new View('user_create');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
+        $view->form = $form;
         $view->display();
     }
 
@@ -35,7 +44,8 @@ class UserController
             $firstName = $_POST['fname'];
             $lastName = $_POST['lname'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            //$password = $_POST['password'];
+            $password = 'nopassword';
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password);
