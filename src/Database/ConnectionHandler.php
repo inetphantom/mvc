@@ -2,7 +2,9 @@
 
 namespace App\Database;
 
+use App\Exception\DatabaseConnectionException;
 use MySQLi;
+use RuntimeException;
 
 /**
  * Der ConnectionHandler ist dafür zuständig, allen Repositories ein und die
@@ -50,7 +52,12 @@ class ConnectionHandler
     {
         // Prüfen ob bereits eine Verbindung existiert
         if (null === self::$connection) {
-            // Konfigurationsdatei auslesen
+            $configFile = '../config.php';
+
+            if (!file_exists($configFile)) {
+                throw new RuntimeException('Database config file not found');
+            }
+
             $config = require '../config.php';
             $host = $config['database']['host'];
             $username = $config['database']['username'];
@@ -62,7 +69,7 @@ class ConnectionHandler
             if (self::$connection->connect_error) {
                 $error = self::$connection->connect_error;
 
-                throw new Exception("Verbindungsfehler: $error");
+                throw new DatabaseConnectionException($error);
             }
 
             self::$connection->set_charset('utf8');
