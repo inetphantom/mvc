@@ -3,6 +3,7 @@
 namespace App\Database;
 
 use MySQLi;
+use Exception;
 
 /**
  * Der ConnectionHandler ist dafür zuständig, allen Repositories ein und die
