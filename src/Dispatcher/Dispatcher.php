@@ -30,9 +30,9 @@ class Dispatcher
      */
     public static function dispatch()
     {
-        $controllerName = UriParser_Solution::getControllerName().'Controller';
+        $controllerName = UriParser::getControllerName().'Controller';
         $className = 'App\\Controller\\'.$controllerName;
-        $methodName = UriParser_Solution::getMethodName();
+        $methodName = UriParser::getMethodName();
 
         // Eine neue Instanz des Controllers wird erstellt und die gewünschte
         // Methode darauf aufgerufen.
