@@ -1,6 +1,9 @@
 <?php
 
-require_once '../repository/UserRepository.php';
+namespace App\Controller;
+
+use App\Repository\UserRepository;
+use App\View\View;
 
 /**
  * Siehe Dokumentation im DefaultController.
@@ -28,9 +31,9 @@ class UserController
 
     public function doCreate()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
+        if (isset($_POST['send'])) {
+            $firstName = $_POST['fname'];
+            $lastName = $_POST['lname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
 

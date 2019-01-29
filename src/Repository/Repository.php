@@ -1,6 +1,9 @@
 <?php
 
-require_once 'ConnectionHandler.php';
+namespace App\Repository;
+
+use App\Database\ConnectionHandler;
+use Exception;
 
 /**
  * Das Model ist das M in MVC. Es ist zustängig für alles, was mit der Datenbank
@@ -89,7 +92,7 @@ class Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      *
-     * @return Der gesuchte Datensatz oder null, sollte dieser nicht existieren.
+     * @return Der gesuchte Datensatz oder null, sollte dieser nicht existieren
      */
     public function readById($id)
     {
@@ -129,7 +132,7 @@ class Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      *
-     * @return Ein array mit den gefundenen Datensätzen.
+     * @return Ein array mit den gefundenen Datensätzen
      */
     public function readAll($max = 100)
     {
