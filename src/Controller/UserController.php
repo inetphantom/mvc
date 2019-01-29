@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 /**
  * Siehe Dokumentation im DefaultController.
  */
@@ -7,7 +9,7 @@ class UserController
 {
     public function index()
     {
-        $this->create();
+        echo 'User index';
     }
 
     public function create()
