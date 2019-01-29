@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Database;
+
+use MySQLi;
+use Exception;
+
 /**
  * Der ConnectionHandler ist dafür zuständig, allen Repositories ein und die
  * selbe Verbindung auf die Datenbank zur Verfügung zu stellen.
@@ -37,16 +42,15 @@ class ConnectionHandler
      * Prüft ob bereits eine Verbindung auf die Datenbank existiert,
      * initialisiert diese ansonsten und gibt sie dann zurück.
      *
-     * @throws Exception wenn der Verbindungsaufbau schiefgegeangen ist.
+     * @throws Exception wenn der Verbindungsaufbau schiefgegeangen ist
      *
-     * @return Die MySQLi Verbindung, welche für den Zugriff aud die Datenbank
-     *             verwendet werden kann.
+     * @return Die mySQLi Verbindung, welche für den Zugriff aud die Datenbank
+     *             verwendet werden kann
      */
     public static function getConnection()
     {
         // Prüfen ob bereits eine Verbindung existiert
-        if (self::$connection === null) {
-
+        if (null === self::$connection) {
             // Konfigurationsdatei auslesen
             $config = require '../config.php';
             $host = $config['database']['host'];

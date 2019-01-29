@@ -9,9 +9,8 @@
  * auf eine bestehende Datei zeigen hierhin umgeleitet.
  */
 
-require_once '../lib/Dispatcher.php';
-require_once '../lib/formbuilder/FormBuilder.php';
-require_once '../lib/View.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-$dispatcher = new Dispatcher();
-$dispatcher->dispatch();
+use App\Dispatcher\Dispatcher;
+
+Dispatcher::dispatch();

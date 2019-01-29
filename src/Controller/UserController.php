@@ -1,6 +1,10 @@
 <?php
 
-require_once '../repository/UserRepository.php';
+namespace App\Controller;
+
+use App\Form\Form;
+use App\Repository\UserRepository;
+use App\View\View;
 
 /**
  * Siehe Dokumentation im DefaultController.
@@ -20,20 +24,28 @@ class UserController
 
     public function create()
     {
+        $form = new Form('/user/doCreate');
+        $form->text()->label('Vorname')->name('fname');
+        $form->text()->label('Nachname')->name('lname');
+        $form->text()->label('Mail')->name('email');
+        // echo $form->password()->label('Password')->name('password');
+        $form->submit()->label('Benutzer erstellen')->name('send');
+
         $view = new View('user_create');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
+        $view->form = $form;
         $view->display();
     }
 
     public function doCreate()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
+        if (isset($_POST['send'])) {
+            $firstName = $_POST['fname'];
+            $lastName = $_POST['lname'];
             $email = $_POST['email'];
-            // $password  = $_POST['password'];
-            $password = 'no_password';
+            //$password = $_POST['password'];
+            $password = 'nopassword';
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password);

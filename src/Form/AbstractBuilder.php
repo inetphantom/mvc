@@ -1,6 +1,8 @@
 <?php
 
-class Builder
+namespace App\Form;
+
+abstract class AbstractBuilder
 {
     private $config;
 
@@ -42,10 +44,5 @@ class Builder
         $this->$name = $args[0];
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->build();
     }
 }

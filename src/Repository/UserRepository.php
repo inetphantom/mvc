@@ -1,6 +1,9 @@
 <?php
 
-require_once '../lib/Repository.php';
+namespace App\Repository;
+
+use App\Database\ConnectionHandler;
+use Exception;
 
 /**
  * Das UserRepository ist zuständig für alle Zugriffe auf die Tabelle "user".

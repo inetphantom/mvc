@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controller;
+
+use App\View\View;
+
 /**
  * Der Controller ist der Ort an dem es für jede Seite, welche der Benutzer
  * anfordern kann eine Methode gibt, welche die dazugehörende Businesslogik

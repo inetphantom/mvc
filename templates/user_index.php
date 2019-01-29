@@ -10,10 +10,10 @@
 				<div class="panel-body">
 					<p class="description">In der Datenbank existiert ein User mit dem Namen <?= $user->firstName; ?> <?= $user->lastName; ?>. Dieser hat die EMail-Adresse: <a href="mailto:<?= $user->email; ?>"><?= $user->email; ?></a></p>
 					<p>
-						<a title="Löschen" href="/user/delete?id=<?= $user->id ?>">Löschen</a>
+						<a title="Löschen" href="/user/delete?id=<?= $user->id; ?>">Löschen</a>
 					</p>
 				</div>
 			</div>
-		<?php endforeach ?>
-	<?php endif ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
 </article>
