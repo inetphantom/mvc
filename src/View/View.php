@@ -1,5 +1,7 @@
 <?php
 
+namespace App\View;
+
 /**
  * Die View is das V aus MVC. Dabei geht es um alles, was dem Client (Browser)
  * als Antwort auf einen Request zurückgegeben wird. Im Normalfall ist das der
@@ -16,7 +18,7 @@
  *     {
  *       $artikel = ...; // Artikel vom Model anfordern
  *
- *       // View erstellen (name = Dateiname im View Verzeichnis)
+ *       // View erstellen (name = Dateiname im templates Verzeichnis)
  *       $view = new View('article_show');
  *
  *       // Werte welche für die Darstellung benötigt werden übergeben.
@@ -30,13 +32,13 @@
  *
  * Sobald die Funktion display() auf der view aufgerufen wird, passieren die
  * folgenden drei Schritte.
- *   1. Die Datei "header.php" aus dem View Verzeichnis wird gerendert. Darin
+ *   1. Die Datei "header.php" aus dem templates Verzeichnis wird gerendert. Darin
  *        sollte ger Ganze HTML Code sein, welcher bei allen seiten gleich ist
  *        und vor den Inhalt kommt. Dadurch entstehen keine Redundanzen.
  *   2. Die Datei, welche o heisst wie im Konstruktor übergeben wird gerendert.
  *        Darin sollte ger Ganze HTML Code sein, welcher speziell für diese
  *        Seite gedacht ist.
- *   3. Die Datei "footer.php" aus dem View Verzeichnis wird gerendert. Darin
+ *   3. Die Datei "footer.php" aus dem templates Verzeichnis wird gerendert. Darin
  *        sollte ger Ganze HTML Code sein, welcher bei allen seiten gleich ist
  *        und nach dem Inhalt. Dadurch entstehen keine Redundanzen.
  *
@@ -61,7 +63,7 @@ class View
 
     public function __construct($viewfile)
     {
-        $this->viewfile = "./../view/$viewfile.php";
+        $this->viewfile = "./../templates/$viewfile.php";
     }
 
     public function __set($key, $value)
@@ -82,8 +84,8 @@ class View
     {
         extract($this->properties);
 
-        require './../view/header.php';
+        require './../templates/header.php';
         require $this->viewfile;
-        require './../view/footer.php';
+        require './../templates/footer.php';
     }
 }
