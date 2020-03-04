@@ -15,7 +15,7 @@ class UserController
     {
         $userRepository = new UserRepository();
 
-        $view = new View('user_index');
+        $view = new View('user/index');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
         $view->users = $userRepository->readAll();
@@ -24,6 +24,7 @@ class UserController
 
     public function create()
     {
+
         $form = new Form('/user/doCreate');
         $form->text()->label('Vorname')->name('fname');
         $form->text()->label('Nachname')->name('lname');
@@ -31,7 +32,9 @@ class UserController
         // echo $form->password()->label('Password')->name('password');
         $form->submit()->label('Benutzer erstellen')->name('send');
 
-        $view = new View('user_create');
+
+        $view = new View('user/create');
+
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->form = $form;
