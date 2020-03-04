@@ -43,10 +43,11 @@ class ConnectionHandler
      * Prüft ob bereits eine Verbindung auf die Datenbank existiert,
      * initialisiert diese ansonsten und gibt sie dann zurück.
      *
-     * @throws Exception wenn der Verbindungsaufbau schiefgegeangen ist
-     *
      * @return Die mySQLi Verbindung, welche für den Zugriff aud die Datenbank
      *             verwendet werden kann
+     * @throws DatabaseConnectionException oder
+     *
+     * @throws Exception wenn der Verbindungsaufbau schiefgegeangen ist
      */
     public static function getConnection()
     {

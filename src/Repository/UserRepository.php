@@ -29,11 +29,12 @@ class UserRepository extends Repository
      * @param $email Wert für die Spalte email
      * @param $password Wert für die Spalte password
      *
+     * @return die Id, welche von der DB zugewiesen wurde.
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
     public function create($firstName, $lastName, $email, $password)
     {
-        $password = sha1($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO $this->tableName (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
 
